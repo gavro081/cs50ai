@@ -82,16 +82,17 @@ def get_model():
     model.add(tf.keras.layers.Convolution2D(
             32, (3, 3), activation="relu", input_shape=(IMG_WIDTH, IMG_HEIGHT, 3)
         ))
-    print(model.output_shape)
+
     model.add(tf.keras.layers.MaxPooling2D(pool_size=(2, 2)))
-    print(model.output_shape)
+
     model.add(tf.keras.layers.Flatten())
-    print(model.output_shape)
+
     model.add(tf.keras.layers.Dense(128, activation="relu"))
+
     tf.keras.layers.Dropout(0.5)
-    print(model.output_shape)
+
     model.add(tf.keras.layers.Dense(NUM_CATEGORIES, activation="softmax"))
-    print(model.output_shape)
+
     model.compile(
         optimizer="adam",
         loss="categorical_crossentropy",
